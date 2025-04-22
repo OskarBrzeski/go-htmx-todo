@@ -14,7 +14,7 @@ var db *sql.DB
 var tmpl *template.Template
 
 func init() {
-	tmpl = template.Must(template.ParseGlob("template/*.html"))
+	tmpl = template.Must(template.ParseGlob("templates/*.html"))
 }
 
 func initDB() {
