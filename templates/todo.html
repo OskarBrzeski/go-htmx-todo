@@ -1,0 +1,46 @@
+{{ define "todoList" }}
+<ul id="taskList">
+  {{ range . }}
+  {{ template "todoItem" .TaskName }}
+  {{ end }}
+</ul>
+<div id="addForm" hx-swap-oob="true"></div>
+<style>
+  ul {
+    padding: 0px;
+  }
+
+  .taskContainer {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 60% auto auto;
+    grid-column-gap: 1em;
+  }
+
+  .taskButtonEdit {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 0.5em 1em;
+    margin: 4px 0px;
+  }
+
+  .taskButtonRemove {
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 0.5em 1em;
+    margin: 4px 0px;
+  }
+
+  .taskButtonRemove:hover {
+    background-color: crimson;
+  }
+</style>
+{{ end }}
+{{ define "todoItem" }}
+<li class="taskContainer">
+  <span class="taskName">{{.}}</span>
+  <button class="taskButtonEdit">Edit</button>
+  <button class="taskButtonRemove">Remove</button>
+</li>
+{{ end }}

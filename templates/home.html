@@ -3,11 +3,46 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
     <title>Home Page</title>
   </head>
   <body>
-    {{template "headerFragment"}}
-    <p>This is the body</p>
-    {{template "footerFragment"}}
+    <section class="grid-container">
+      <section class="task-column">
+        <h2>Tasks</h2>
+        <button
+          class="addTaskButton"
+          hx-get="/new"
+          hx-target="#addForm"
+          hx-swap="outerHTML"
+        >Add New Task</button>
+        <div hx-get="/tasks" hx-trigger="load" hx-swap="outerHTML"></div>
+      </section>
+      <section class="form-column">
+        <h2>Task Form</h2>
+        <div id="addForm"></div>
+      </section>
+    </section>
   </body>
 </html>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 40% auto;
+    grid-column-gap: 2em;
+  }
+
+  .addTaskButton {
+    width: 60%;
+    background-color: green;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 1em 3em;
+    margin: 0 20%;
+
+  }
+
+  .addTaskButton:hover {
+    background-color: darkgreen;
+  }
+</style>

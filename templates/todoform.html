@@ -1,0 +1,11 @@
+{{ define "taskAddForm" }}
+<form id="addForm">
+  <input type="text" name="task">
+  <button class="addConfirmButton" hx-post="/add" hx-target="#taskList">Confirm</button>
+</form>
+<style>
+  .addConfirmButton {
+
+  }
+</style>
+{{ end }}
