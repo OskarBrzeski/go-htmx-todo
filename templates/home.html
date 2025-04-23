@@ -13,14 +13,14 @@
         <button
           class="addTaskButton"
           hx-get="/new"
-          hx-target="#addForm"
+          hx-target="#form"
           hx-swap="outerHTML"
         >Add New Task</button>
         <div hx-get="/tasks" hx-trigger="load" hx-swap="outerHTML"></div>
       </section>
       <section class="form-column">
         <h2>Task Form</h2>
-        <div id="addForm"></div>
+        <div id="form"></div>
       </section>
     </section>
   </body>

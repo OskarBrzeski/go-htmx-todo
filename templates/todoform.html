@@ -1,11 +1,14 @@
 {{ define "taskAddForm" }}
-<form id="addForm">
+<form id="form">
   <input type="text" name="task">
-  <button class="addConfirmButton" hx-post="/add" hx-target="#taskList">Confirm</button>
+  <button hx-post="/add" hx-target="#taskList">Confirm</button>
 </form>
-<style>
-  .addConfirmButton {
-
-  }
-</style>
+{{ end }}
+{{ define "taskUpdateForm" }}
+<form id="form">
+  <input type="text" name="task" value="{{.TaskName}}">
+  <input type="checkbox" name="done" {{ if .Done }} checked {{ end }}>
+  <label for="done">Completed</label>
+  <button hx-patch="/update/{{.Id}}" hx-target="#taskList">Update</button>
+</form>
 {{ end }}

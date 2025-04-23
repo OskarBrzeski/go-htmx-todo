@@ -1,10 +1,10 @@
 {{ define "todoList" }}
 <ul id="taskList">
   {{ range . }}
-  {{ template "todoItem" .TaskName }}
+  {{ template "todoItem" . }}
   {{ end }}
 </ul>
-<div id="addForm" hx-swap-oob="true"></div>
+<div id="form" hx-swap-oob="true"></div>
 <style>
   ul {
     padding: 0px;
@@ -35,12 +35,26 @@
   .taskButtonRemove:hover {
     background-color: crimson;
   }
+
+  .done {
+    text-decoration: line-through;
+  }
 </style>
 {{ end }}
 {{ define "todoItem" }}
 <li class="taskContainer">
-  <span class="taskName">{{.}}</span>
-  <button class="taskButtonEdit">Edit</button>
-  <button class="taskButtonRemove">Remove</button>
+  <span class="taskName {{if .Done}} done {{end}}">{{.TaskName}}</span>
+  <button
+    class="taskButtonEdit"
+    hx-get="/updateform/{{.Id}}"
+    hx-target="#form"
+    hx-swap="outerHTML"
+  >Edit</button>
+  <button
+    class="taskButtonRemove"
+    hx-delete="/task/{{.Id}}"
+    hx-target="#taskList"
+    hx-swap="outerHTML"
+  >Remove</button>
 </li>
 {{ end }}
