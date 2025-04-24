@@ -54,7 +54,7 @@ func main() {
 	gRouter.HandleFunc("/update/{id}", updateTask).Methods("PATCH")
 	gRouter.HandleFunc("/task/{id}", deleteTask).Methods("DELETE")
 
-	fmt.Println("Listening on Port 3030")
+	fmt.Println("Listening on Port 3000")
 	http.ListenAndServe(":3000", gRouter)
 }
 
